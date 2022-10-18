@@ -293,13 +293,13 @@ def initWeights(input_channels, output_channels, num_basis, order, separated):
     numFiltersPerBasis = (order + 1)*(order + 2)/2
 
     if separated:
-        weights1 = tensorflow.Variable(initial_value = tensorflow.random.uniform(shape = (int(num_basis),  int(input_channels), int(numFiltersPerBasis)), minval = -1, maxval = 1, dtype = 'float'), name = 'clWeights1', trainable = True)
-        weights2 = tensorflow.Variable(initial_value = tensorflow.random.uniform(shape = (int(num_basis),  1,1, int(numFiltersPerBasis), int(output_channels/num_basis)), minval = -1, maxval = 1, dtype = 'float'), name = 'clWeights2', trainable = True)
+        weights1 = tensorflow.Variable(initial_value = tensorflow.random.uniform(shape = (int(num_basis),  int(input_channels), int(numFiltersPerBasis)), minval = -1e-2, maxval = 1e-2, dtype = 'float'), name = 'clWeights1', trainable = True)
+        weights2 = tensorflow.Variable(initial_value = tensorflow.random.uniform(shape = (int(num_basis),  1,1, int(numFiltersPerBasis), int(output_channels/num_basis)), minval = -1e-2, maxval = 1e-2, dtype = 'float'), name = 'clWeights2', trainable = True)
         weights = [weights1, weights2]
 
     else:
-        
-        weights = tensorflow.Variable(initial_value = tensorflow.random.uniform(shape = (int(num_basis), int(input_channels),   int(output_channels/num_basis), int(numFiltersPerBasis)), minval = -1, maxval = 1, dtype = 'float'), name = 'clWeights', trainable = True)
+    
+        weights = tensorflow.Variable(initial_value = tensorflow.random.uniform(shape = (int(num_basis), int(input_channels),   int(output_channels/num_basis), int(numFiltersPerBasis)), minval = -1.5e-1, maxval = 1.5e-1, dtype = 'float'), name = 'clWeights', trainable = True)
         
     return weights
 
